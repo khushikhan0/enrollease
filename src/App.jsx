@@ -8,10 +8,11 @@ function App() {
 
   return (
     <>
-      <h1>hi team :D</h1>
+      <h1>Vite + lalals</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          count is {count} 
+          
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
