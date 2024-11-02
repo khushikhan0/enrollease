@@ -26,5 +26,5 @@ personal page:
 
 course details page: 
 - gives you a detailed list of what classes you need to take / what classes you've taken
-    - course name, crns, prereqs, professors available, recommended professors, semesters its offered
-    - if youre husky -> NUPATH coverage
+    - course name, crns, prereqs, coreqs
+    - nice to have: professors available, recommended professors, semesters its offered, if youre husky -> NUPATH coverage

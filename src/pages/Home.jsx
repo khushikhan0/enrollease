@@ -1,8 +1,9 @@
 // Home.js
 import React, { useState } from 'react';
-import IconButton from '@mui/joy/IconButton';
 import NavBar from '../components/Navbar';
 import { Button, CssBaseline } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import NavBarButton from '../components/NavBarButton';
 
 export default function Home() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -15,23 +16,8 @@ export default function Home() {
     };
 
     return (
-        // <React.Fragment>
-        //     <IconButton variant="outlined" color="neutral" onClick={toggleDrawer(true)} style={{ zIndex: 1000 }}>
-        //         open drawer
-        //     </IconButton>
-        //     {/* <NavBar isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} /> */}
-        // </React.Fragment>
-        // <div>
-        //     <IconButton variant="outlined" color="neutral" onClick={toggleDrawer(true)}>
-        //         open drawer
-        //     </IconButton>
-        //     <NavBar isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-        // </div>
-        <div>
-        <Button onClick={toggleDrawer(true)} sx={{ color: 'black' }}>
-            click me
-        </Button>
-        <NavBar isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+    <div>
+        <NavBarButton />
     </div>
     );
 }
