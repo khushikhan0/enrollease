@@ -49,5 +49,18 @@
 }
 
 .better-button {
+  color: black !important;
+  border: none !important;
+  background-color: #f0f0f0 !important;
+  transition: none !important;
   text-transform: initial !important;
+  outline: none !important;
+}
+
+.better-button:hover {
+  background-color: lightgray !important;
+}
+
+.better-button:focus {
+  outline: none !important;
 }

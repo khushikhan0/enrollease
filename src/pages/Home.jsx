@@ -16,18 +16,18 @@ export default function Home() {
                 <Button 
                     variant="outlined" 
                     className='better-button'
-                    sx={{ 
-                        color: 'black', 
-                        border: 'none',   
-                        backgroundColor: '#f0f0f0',
-                        '&:hover': {
-                            backgroundColor: 'lightgray',
-                        },
-                        '&:focus': {
-                            outline: 'none', 
-                        },
-                        transition: 'none'
-                    }}
+                    // sx={{ 
+                    //     color: 'black', 
+                    //     border: 'none',   
+                    //     backgroundColor: '#f0f0f0',
+                    //     '&:hover': {
+                    //         backgroundColor: 'lightgray',
+                    //     },
+                    //     '&:focus': {
+                    //         outline: 'none', 
+                    //     },
+                    //     transition: 'none'
+                    // }}
                 >
                     get started
                 </Button>
