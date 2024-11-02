@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+.centered {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.better-button {
+  text-transform: initial !important;
+}

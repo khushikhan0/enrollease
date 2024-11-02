@@ -1,37 +1,37 @@
 // Home.js
 import React, { useState } from 'react';
-import IconButton from '@mui/joy/IconButton';
 import NavBar from '../components/Navbar';
-import { Button, CssBaseline } from '@mui/material';
+import { Button, CssBaseline, Stack } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import NavBarButton from '../components/NavBarButton';
+import '../App.css'
 
 export default function Home() {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-    const toggleDrawer = (open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setIsDrawerOpen(open);
-    };
-
     return (
-        // <React.Fragment>
-        //     <IconButton variant="outlined" color="neutral" onClick={toggleDrawer(true)} style={{ zIndex: 1000 }}>
-        //         open drawer
-        //     </IconButton>
-        //     {/* <NavBar isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} /> */}
-        // </React.Fragment>
-        // <div>
-        //     <IconButton variant="outlined" color="neutral" onClick={toggleDrawer(true)}>
-        //         open drawer
-        //     </IconButton>
-        //     <NavBar isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-        // </div>
         <div>
-        <Button onClick={toggleDrawer(true)} sx={{ color: 'black' }}>
-            click me
-        </Button>
-        <NavBar isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-    </div>
+            <NavBarButton />
+            <Stack spacing={2} alignItems="center">
+                <h1>welcome to enrollease</h1>
+                <h3>ai-powered advising</h3>
+                <Button 
+                    variant="outlined" 
+                    className='better-button'
+                    sx={{ 
+                        color: 'black', 
+                        border: 'none',   
+                        backgroundColor: '#f0f0f0',
+                        '&:hover': {
+                            backgroundColor: 'lightgray',
+                        },
+                        '&:focus': {
+                            outline: 'none', 
+                        },
+                        transition: 'none'
+                    }}
+                >
+                    get started
+                </Button>
+            </Stack>
+        </div>
     );
 }
