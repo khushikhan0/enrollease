@@ -1,0 +1,30 @@
+pages: 
+- login / signup page
+- welcome page
+- home
+- personal page 
+- course details page
+
+###########################
+
+login / signup page: 
+- basic string == string stuff tbh
+
+welcome page (only when you're signing up): 
+- whats ur school
+- whats ur major -> concentration?
+- check off which classes you've taken so far (bubble style, just click on the ones you've taken) --> CS ONLY
+    - search functionality if you cant find your class
+
+home:
+- intro about what our product is
+- directs you to signup page
+
+personal page: 
+- schedule on the left side
+- chatbox with ai advisor on the right side
+
+course details page: 
+- gives you a detailed list of what classes you need to take / what classes you've taken
+    - course name, crns, prereqs, professors available, recommended professors, semesters its offered
+    - if youre husky -> NUPATH coverage
