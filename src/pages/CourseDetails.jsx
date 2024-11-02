@@ -1,11 +1,22 @@
+import { Button } from '@mui/material';
 import React from 'react';
-import NavBarButton from '../components/NavBarButton';
+
+var message
+
+async function onClick(event) {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/courses");
+        const data = await response.json();
+        
+        // Log the string directly from the backend
+        console.log(data.courses); // Assuming data.courses is the string you want to log
+    } catch (error) {
+        console.error("Error fetching courses:", error);
+    }
+}
 
 export default function CourseDetails() {
     return (
-        <div>
-            <NavBarButton />
-            <h1>course details bbg</h1>
-        </div>
+        <Button onClick={onClick}>pushme</Button>
     );
 }
