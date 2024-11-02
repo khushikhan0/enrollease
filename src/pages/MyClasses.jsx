@@ -1,7 +1,11 @@
 import React from 'react';
+import NavBarButton from '../components/NavBarButton';
 
 export default function MyClasses() {
     return (
-        <h1>hi im my classes</h1>
+        <div>
+            <NavBarButton />
+            <h1>hi im my classes</h1>
+        </div>
     );
 }
