@@ -83,7 +83,7 @@ export default function SignUp() {
                 </Button>
             </div>
 
-            <p>Already have an account? <a href="/log-in"> Log In</a>!</p>
+            <p>Already have an account? <a href="/sign-in"> Log In</a>!</p>
 
             </Paper>
         </div>

@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import "./index.css";
-import LogIn from "./pages/LogIn";
+import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
 import CourseDetails from "./pages/CourseDetails";
 import MyClasses from "./pages/MyClasses";
@@ -21,7 +21,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/log-in" element={<LogIn />} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/course-details" element={<CourseDetails />} />
         <Route path="/my-classes" element={<MyClasses />} />
         <Route path="/sign-up" element={<SignUp />} />

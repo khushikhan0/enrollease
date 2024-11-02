@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export default function LogIn() {
+export default function SignIn() {
     return (
         <div class="centered-container">
             <Paper 
