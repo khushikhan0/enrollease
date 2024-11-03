@@ -1,4 +1,4 @@
-## **About _enrollease_**
+## **_enrollease_**
 
 ### Our inspiration
 One thing many college students (including us!) dread is registering for classes. Academic advisors aren't always readily available and may not have all the information students need, which is why we decided to make _enrollease_, an academic advising tool that students can access anytime, anywhere. 
