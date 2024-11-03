@@ -4,31 +4,48 @@ import { Paper, Button, TextField } from '@mui/material';
 
 // Initial semester data
 const initialSemesters = {
-    fall1: [["year 1: fall"],[]],
-    spring1: [["year 1: spring"],[]],
-    summer1: [["year 1: summer"],[]],
-    fall2: [["year 2: fall"],[]],
-    spring2: [["year 2: spring"],[]],
-    summer2: [["year 2: summer"],[]],
-    fall3: [["year 3: fall"],[]],
-    spring3: [["year 3: spring"],[]],
-    summer3: [["year 3: summer"],[]],
-    fall4: [["year 4: fall"],[]],
-    spring4: [["year 4: spring"],[]],
-    summer4: [["year 4: summer"],[]]
+    fall1: [],
+    spring1: [],
+    summer1: [],
+    fall2: [],
+    spring2: [],
+    summer2: [],
+    fall3: [],
+    spring3: [],
+    summer3: [],
+    fall4: [],
+    spring4: [],
+    summer4: []
+};
+
+// Titles for each semester
+const semesterTitles = {
+    fall1: "year 1: fall",
+    spring1: "year 1: spring",
+    summer1: "year 1: summer",
+    fall2: "year 2: fall",
+    spring2: "year 2: spring",
+    summer2: "year 2: summer",
+    fall3: "year 3: fall",
+    spring3: "year 3: spring",
+    summer3: "year 3: summer",
+    fall4: "year 4: fall",
+    spring4: "year 4: spring",
+    summer4: "year 4: summer",
 };
 
 // Component to display classes for a single semester and add/remove classes
-function SemesterClasses({ semester, classes, updateClasses }) {
+function SemesterClasses({ semesterTitle, classes, updateClasses, semesterKey }) {
     const [classInput, setClassInput] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // State for error message
 
     const handleAddClass = () => {
-        if (classInput.trim()) {
-            if (classes.includes(classInput.trim())) { // Check for duplicates
+        const trimmedInput = classInput.trim();
+        if (trimmedInput) {
+            if (classes.includes(trimmedInput)) { // Check for duplicates
                 setErrorMessage('This class is already added!'); // Set error message
             } else {
-                updateClasses(semester, classInput.trim(), 'add');
+                updateClasses(semesterKey, trimmedInput, 'add'); // Use the key for updating
                 setClassInput(''); // Clear input field
                 setErrorMessage(''); // Clear error message
             }
@@ -36,8 +53,9 @@ function SemesterClasses({ semester, classes, updateClasses }) {
     };
 
     const handleRemoveClass = () => {
-        if (classInput.trim()) {
-            updateClasses(semester, classInput.trim(), 'remove');
+        const trimmedInput = classInput.trim();
+        if (trimmedInput) {
+            updateClasses(semesterKey, trimmedInput, 'remove'); // Use the key for updating
             setClassInput(''); // Clear input field
             setErrorMessage(''); // Clear error message
         }
@@ -54,7 +72,7 @@ function SemesterClasses({ semester, classes, updateClasses }) {
                 alignItems: 'center'
             }}
         >
-            <p style={{ fontWeight: 'bold' }}>{semester}</p>
+            <p style={{ fontWeight: 'bold' }}>{semesterTitle}</p> {/* Use the title here */}
             <ul style={{ 
                 listStyleType: 'none', 
                 padding: 0, 
@@ -108,14 +126,14 @@ export default function MyClasses() {
     const [semesterData, setSemesterData] = useState(initialSemesters);
 
     // Function to add or remove a class from a specific semester
-    const updateClasses = (semester, classItem, action) => {
+    const updateClasses = (semesterKey, classItem, action) => {
         setSemesterData((prevData) => {
             const updatedClasses = 
                 action === 'add'
-                    ? [...prevData[semester], classItem]
-                    : prevData[semester].filter((item) => item !== classItem);
+                    ? [...prevData[semesterKey], classItem]
+                    : prevData[semesterKey].filter((item) => item !== classItem);
 
-            return { ...prevData, [semester]: updatedClasses };
+            return { ...prevData, [semesterKey]: updatedClasses }; // Update the specific semester
         });
     };
 
@@ -128,12 +146,13 @@ export default function MyClasses() {
                 gap: '20px',
                 padding: '20px'
             }}>
-                {Object.keys(semesterData).map((semester) => (
-                    <div key={semester} style={{ width: '100%' }}>
+                {Object.keys(semesterData).map((semesterKey) => (
+                    <div key={semesterKey} style={{ width: '100%' }}>
                         <SemesterClasses 
-                            semester={semesterData[semester][0][0]} 
-                            classes={semesterData[semester][1]} 
+                            semesterTitle={semesterTitles[semesterKey]}  // Pass the title here
+                            classes={semesterData[semesterKey]} 
                             updateClasses={updateClasses} 
+                            semesterKey={semesterKey}  // Pass the semester key for updates
                         />
                     </div>
                 ))}
