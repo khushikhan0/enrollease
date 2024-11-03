@@ -4,7 +4,7 @@ import { Paper, Button, TextField } from '@mui/material';
 
 // Initial semester data
 const initialSemesters = {
-    fall1: [["year 1: fall"],[]],
+    fall1: [["year 1: fall"],["CS2500","CS1100","CS2501","CS2810","ENGW1111"]],
     spring1: [["year 1: spring"],[]],
     summer1: [["year 1: summer"],[]],
     fall2: [["year 2: fall"],[]],
@@ -124,12 +124,14 @@ export default function MyClasses() {
             <NavBarButton />
             <div style={{
                 display: 'grid',
+                width: '900px',
+                height: '800px',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '20px',
                 padding: '20px'
             }}>
                 {Object.keys(semesterData).map((semester) => (
-                    <div key={semester} style={{ width: '100%' }}>
+                    <div key={semester} style={{ width: '100%'}}>
                         <SemesterClasses 
                             semester={semesterData[semester][0][0]} 
                             classes={semesterData[semester][1]} 
