@@ -54,7 +54,7 @@ export default function AboutYou() {
                     </Button>
                 </div>
 
-                <p>have an account? <a href="/sign-up"> log in</a>!</p>
+                <p>have an account? <a href="/sign-up" style={{ color: 'black', fontWeight: 'bold' }}> log in</a>!</p>
 
             </Paper>
         </div>

@@ -3,6 +3,8 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import { Stack } from '@mui/material';
+import { FormatItalic } from '@mui/icons-material';
 
 export default function SignUp() {
     // set the use states for the fields
@@ -41,7 +43,7 @@ export default function SignUp() {
     }
 
     return (
-        <div class="centered-container">
+        <div className="centered-container">
             <Paper 
             elevation={3}
             style={{
@@ -52,87 +54,93 @@ export default function SignUp() {
             }}
             variant='outlined'
             > 
-            <h1>Sign Up for EnrollEase!</h1>
+            <h2>sign up to enroll with ease</h2>
 
             <div style={{marginBottom: '2px'}}>
-                <TextField 
-                value={firstName}
-                onChange={(e) => setFN(e.target.value)}
-                id="first-name" 
-                label="First Name" 
-                variant="outlined" 
-                style={{
-                    margin: '10px',
-                    width: '200px',
-                }}
-                />
-                <TextField 
-                value={lastName}
-                onChange={(e) => setLN(e.target.value)}
-                id="last-name" 
-                label="Last Name" 
-                variant="outlined" 
-                style={{
-                    margin: '10px',
-                    width: '200px',
-                }}
-                />
+                <Stack direction="row">
+                    <TextField 
+                    value={firstName}
+                    onChange={(e) => setFN(e.target.value)}
+                    id="first-name" 
+                    label="first name" 
+                    variant="outlined" 
+                    style={{
+                        margin: '10px',
+                        width: '200px',
+                        display: 'flex'
+                    }}
+                    />
+                    <TextField 
+                        value={lastName}
+                        onChange={(e) => setLN(e.target.value)}
+                        id="last-name" 
+                        label="last name" 
+                        variant="outlined" 
+                        style={{
+                            margin: '10px',
+                            width: '200px',
+                            display: 'flex'
+                        }}
+                        />
+                    </Stack>    
             </div>
 
             <div style={{marginBottom: '6px'}}>
                 <TextField 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                id="email-address" 
-                label="Email Address" 
-                variant="outlined"
-                style={{
-                    margin: '6px',
-                    width: '422px',
-                }}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    id="email-address" 
+                    label="email address" 
+                    variant="outlined"
+                    style={{
+                        margin: '6px',
+                        width: '422px',
+                    }}
                 />
             </div>
 
             <div style={{marginBottom: '6px'}}>
                 <TextField
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                id="password" 
-                label="Password" 
-                variant="outlined"
-                type="password"
-                style={{
-                    margin: '6px',
-                    width: '422px',
-                }}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    id="password" 
+                    label="password" 
+                    variant="outlined"
+                    type="password"
+                    style={{
+                        margin: '6px',
+                        width: '422px',
+                    }}
                 />
             </div>
             
             <div style={{marginBottom: '12px'}}>
                 <TextField 
-                value={confirmPW}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                id="confirm-password" 
-                label="Confirm Password" 
-                variant="outlined"
-                type="password"
-                style={{
-                    margin: '6px',
-                    width: '422px',
-                }}
+                    value={confirmPW}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    id="confirm-password" 
+                    label="confirm password" 
+                    variant="outlined"
+                    type="password"
+                    style={{
+                        margin: '6px',
+                        width: '422px',
+                    }}
                 />
             </div>
 
-            <div style={{marginBottom: '12px'}}>
+            <div style={{ marginTop: '12px', marginBottom: '12px'}}>
                 <Button 
-                variant="contained"
-                onClick={signUp}
+                    variant="contained"
+                    onClick={signUp}
+                    className='better-button-inverted'
+                    boxShadow='none'
                 >
-                    Sign Up
+                    sign up
                 </Button>
             </div>
 
-            <p>Already have an account? <a href="/log-in"> Log In</a>!</p>
+            <p>already have an account? <a href="/log-in" style={{ color: 'black', fontWeight: 'bold' }}> log in</a>!</p>
 
             </Paper>
         </div>

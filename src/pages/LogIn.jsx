@@ -51,7 +51,7 @@ export default function LogIn() {
                 </Button>
             </div>
 
-            <p>Don't have an account? <a href="/sign-up"> Sign Up</a>!</p>
+            <p>Don't have an account? <a href="/sign-up" style={{ color: 'black', fontWeight: 'bold' }}> Sign Up</a>!</p>
 
             </Paper>
         </div>

@@ -21,7 +21,9 @@ export default function Home() {
                         className='better-button-inverted'
                         
                     >
-                        <a href="/about-you">get started</a>
+                        <a href="/about-you" style={{
+                            color: 'white'
+                        }}>get started</a>
                     </Button>
                 </Stack>
             </div>
