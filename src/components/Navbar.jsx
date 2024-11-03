@@ -8,7 +8,7 @@ export default function CustomDrawer({ isOpen, toggleDrawer }) {
     const menuItems = [
         { label: 'home', path: '/'},
         { label: 'my classes', path: '/my-classes'},
-        { label: 'course details', path: '/course-details'},
+        // { label: 'course details', path: '/course-details'},
         { label: 'settings', path: '/'}
     ];
 

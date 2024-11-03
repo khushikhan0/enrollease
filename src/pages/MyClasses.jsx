@@ -3,6 +3,7 @@ import NavBarButton from '../components/NavBarButton';
 import { Paper, Button, TextField, Stack, Divider, InputAdornment, IconButton } from '@mui/material';
 import ChatBox from '../components/ChatBox';
 import SearchIcon from '@mui/icons-material/Search';
+import ChatBubble from '../components/ChatBubble';
 
 // Initial semester data
 const initialSemesters = {
@@ -126,6 +127,7 @@ function SemesterClasses({ semesterTitle, classes, updateClasses, semesterKey })
 // Main component to display the grid of semesters
 export default function MyClasses() {
     const [semesterData, setSemesterData] = useState(initialSemesters);
+    const [searchInput, setSearchInput] = useState('');
 
     // Function to add or remove a class from a specific semester
     const updateClasses = (semesterKey, classItem, action) => {
@@ -139,6 +141,12 @@ export default function MyClasses() {
         });
     };
 
+    // Filter the semester keys based on the search input
+    const filteredSemesters = Object.keys(semesterData).filter((semesterKey) => {
+        const title = semesterTitles[semesterKey].toLowerCase();
+        return title.includes(searchInput.toLowerCase());
+    });
+
     return (
         <div>
             <NavBarButton />
@@ -150,6 +158,7 @@ export default function MyClasses() {
                         <TextField
                             placeholder="search for semester"
                             sx={{ margin: '10px', width: '90%' }}
+                            onChange={(e) => setSearchInput(e.target.value)} // Update search input
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
@@ -162,18 +171,19 @@ export default function MyClasses() {
                         />
                     </Stack>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', padding: '20px' }}>
-                    {Object.keys(semesterData).map((semesterKey) => (
-                        <div key={semesterKey} style={{ width: '100%' }}>
-                            <SemesterClasses 
-                                semesterTitle={semesterTitles[semesterKey]}  // Pass the title here
-                                classes={semesterData[semesterKey]} 
-                                updateClasses={updateClasses} 
-                                semesterKey={semesterKey}  // Pass the semester key for updates
-                            />
-                        </div>
-                    ))}
-                </div>
+                        {filteredSemesters.map((semesterKey) => (
+                            <div key={semesterKey} style={{ width: '100%' }}>
+                                <SemesterClasses 
+                                    semesterTitle={semesterTitles[semesterKey]}  // Pass the title here
+                                    classes={semesterData[semesterKey]} 
+                                    updateClasses={updateClasses} 
+                                    semesterKey={semesterKey}  // Pass the semester key for updates
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </Stack>
+                
                 <ChatBox />
             </Stack>
         </div>

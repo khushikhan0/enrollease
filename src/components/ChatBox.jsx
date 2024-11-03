@@ -1,70 +1,89 @@
 import React, { useState } from 'react';
 import "../App.css";
-import { TextField, Button, Card, CardContent, Box, CardActions } from '@mui/material';
+import { TextField, Button, Card, CardContent, Box } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import axios from 'axios'; // Import Axios for making HTTP requests
+import axios from 'axios';
+import { Grid } from '@mui/joy';
+import ChatBubble from './ChatBubble';
 
 export default function ChatBox() {
     const [userInput, setUserInput] = useState('');
-    const [aiInput, setAiInput] = useState('');
+    const [messageHistory, setMessageHistory] = useState([{ sender: "ai", text: "welcome, how can I help you?" }, { sender: "user", text: "i need help!!!!"}]);
 
     const handleSubmit = async () => {
         if (!userInput) return; // Prevent submission if input is empty
 
         try {
+            setMessageHistory((prev) => [...prev, { sender: 'user', text: userInput }]);
+
             const response = await axios.post('http://127.0.0.1:5000/api/ask', {
                 question: userInput,
             });
 
             // Set the AI's response
-            setAiInput(response.data.answer);
-            // Optionally clear the input after sending
-            setUserInput('');
+            setMessageHistory((prev) => [...prev, { sender: 'ai', text: response.data.answer }]);
+            setUserInput(''); // Clear input after sending
         } catch (error) {
             console.error('Error communicating with the server:', error);
         }
     };
 
     return (
-        <div>
-            <Box display='flex' justifyContent='center' alignItems='center' sx={{ marginTop: '20px', marginBottom: '20px' }}>
-                <p>{userInput}</p> 
-                <p>{aiInput}</p>
-
-                <Card variant='outlined' sx={{ display: 'flex', width: '90%', maxWidth: '1000px', borderRadius: '10px', boxShadow: '0px 4px 20px rgba(200, 200, 200, 0.5)', transition: 'box-shadow 0.3s ease-in-out' }}>
-                    <Box display="flex" justifyContent="center" alignItems="center" height="100vh" width="100vw">
-                        <Card variant='outlined' sx={{ boxShadow: 'none', minWidth: '200px', display: 'flex', width: '80%', maxWidth: '1000px', marginBottom: '-80vh', borderRadius: '10px' }}>
-                            <CardContent sx={{ flexGrow: 1, borderRadius: '10px' }}>
-                                    <TextField 
-                                        label="ask advisor a question" 
-                                        variant="outlined" 
-                                        sx={{
-                                            margin: '6px',
-                                            width: '100%',
-                                            '& .MuiOutlinedInput-root': {
-                                                borderRadius: '10px'
-                                            }
-                                        }}
-                                        value={userInput}
-                                        onChange={(e) => setUserInput(e.target.value)}
+        <Box display='flex' flexDirection='column' width="600px" top='50px' height='100vh' sx={{ position: 'relative' }}>
+            <Box display='flex' justifyContent='center' alignItems='flex-start' sx={{ flexGrow: 1, padding: '30px', overflowY: 'auto' }}>
+                <Card variant='outlined' sx={{ width: '100%', maxWidth: '800px', height: 'calc(100vh - 100px)', borderRadius: '10px', boxShadow: '0px 4px 20px rgba(200, 200, 200, 0.5)', transition: 'box-shadow 0.3s ease-in-out' }}>
+                    {messageHistory.map((item, index) => {
+                            const isAI = item.sender === "ai";
+                            const backgroundColor = isAI ? '#000000' : '#ffffff'; 
+                            const textColor = isAI ? '#ffffff' : '#000000';
+                            
+                            return (
+                                <Grid item xs={12} key={index}>
+                                    <ChatBubble
+                                        key={index}
+                                        text={item.text}
+                                        bkgdColor={backgroundColor}
+                                        borderColor={backgroundColor}
+                                        textColor={textColor}
+                                        isAI={isAI}
                                     />
-                            </CardContent>
-                                <Button size="small" sx={{ marginLeft: "-12px", display: 'flex', backgroundColor: "transparent", '&:focus': { outline: 'none' } }} onClick={handleSubmit}>
-                                    <ArrowUpwardIcon 
-                                        fontSize='large'
-                                        sx={{
-                                            backgroundColor: 'lightgray',  
-                                            color: '#fff',             
-                                            borderRadius: '20%',       
-                                            padding: '4px',     
-                                            '&:hover': { backgroundColor: '#272727' },     
-                                        }}
-                                    />
-                                </Button>
-                        </Card>
-                    </Box>
-                </Card> 
+                                </Grid>
+                            );
+                        })}
+                </Card>
             </Box>
-        </div>
-      );
+
+            <Box sx={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', width: '90%', maxWidth: '1000px', minWidth: '300px' }}>
+                <Card variant='outlined' sx={{ boxShadow: 'none', borderRadius: '10px' }}>
+                    <CardContent sx={{ padding: '10px', display: 'flex', alignItems: 'center' }}>
+                        <TextField 
+                            label="ask an advisor" 
+                            variant="outlined" 
+                            sx={{
+                                margin: '6px',
+                                width: '100%',
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: '10px'
+                                }
+                            }}
+                            value={userInput}
+                            onChange={(e) => setUserInput(e.target.value)}
+                        />
+                        <Button size="small" sx={{ marginLeft: "-12px", display: 'flex', backgroundColor: "transparent", '&:focus': { outline: 'none' } }} onClick={handleSubmit}>
+                            <ArrowUpwardIcon 
+                                fontSize='large'
+                                sx={{
+                                    backgroundColor: 'lightgray',  
+                                    color: '#fff',             
+                                    borderRadius: '20%',       
+                                    padding: '4px',     
+                                    '&:hover': { backgroundColor: '#272727' },     
+                                }}
+                            />
+                        </Button>
+                    </CardContent>
+                </Card>
+            </Box>
+        </Box>
+    );
 }

@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React from 'react';
+import ChatBubble from '../components/ChatBubble';
 
 var message
 
@@ -19,6 +20,9 @@ var apple = "hi"
 
 export default function CourseDetails() {
     return (
-        <Button>pushme</Button>
+        <div>
+            <ChatBubble backgroundColor='#ffffff' text="hello everynyan wha i wish i were a bird hi hi hi hihi i hihihihi h ihibihhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdefgr;hnoiuj egrvqhuoertvhuegrvbhu igerbhu verghub vergthu bervghu oerghuo erhu ioegrhou ieqgrt hoiu" />
+            <Button>pushme</Button>
+        </div>
     );
 }
