@@ -19,6 +19,6 @@ var apple = "hi"
 
 export default function CourseDetails() {
     return (
-        <Button onClick={onClick}>{apple}</Button>
+        <Button>pushme</Button>
     );
 }

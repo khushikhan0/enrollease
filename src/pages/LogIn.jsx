@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -32,7 +32,7 @@ export default function LogIn() {
 
             <div style={{marginBottom: '12px'}}>
                 <TextField 
-                id="password" s
+                id="password" 
                 label="password" 
                 variant="outlined"
                 type="password"
