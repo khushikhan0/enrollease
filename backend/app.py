@@ -25,9 +25,7 @@ def signUp():
     first_name = data.get('firstName')
     last_name = data.get('lastName')
 
-    print("EMAILEMAILEMAILEMAIL", email)
-
-    response = supabase.auth.sign_up (
+    reponse = supabase.auth.sign_up (
         {"email": email, "password": password}
     )
      # Check if the response contains an error or user data
