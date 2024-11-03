@@ -14,15 +14,19 @@ import LogIn from "./pages/LogIn";
 import Home from "./pages/Home";
 import CourseDetails from "./pages/CourseDetails";
 import MyClasses from "./pages/MyClasses";
+import AboutYou from "./pages/AboutYou";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/log-in" element={<LogIn />} />
         <Route path="/course-details" element={<CourseDetails />} />
         <Route path="/my-classes" element={<MyClasses />} />
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="/about-you" element={<AboutYou />} />
       </Routes>
     </Router>
   );

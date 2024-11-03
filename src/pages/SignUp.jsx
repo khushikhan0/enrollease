@@ -9,10 +9,13 @@ export default function SignUp() {
             <Paper 
             elevation={3}
             style={{
-                padding: '24px',
+                padding: '16px',
                 margin: '16px',
                 textAlign: 'center',
-            }}> 
+                boxShadow: 'none',
+            }}
+            variant='outlined'
+            > 
             <h1>Sign Up for EnrollEase!</h1>
 
             <div style={{marginBottom: '2px'}}>
@@ -83,7 +86,7 @@ export default function SignUp() {
                 </Button>
             </div>
 
-            <p>Already have an account? <a href="/login"> Log In</a>!</p>
+            <p>Already have an account? <a href="/log-in"> Log In</a>!</p>
 
             </Paper>
         </div>

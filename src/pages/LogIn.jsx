@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export default function SignIn() {
+export default function LogIn() {
     return (
         <div class="centered-container">
             <Paper 
@@ -12,7 +12,10 @@ export default function SignIn() {
                 padding: '16px',
                 margin: '16px',
                 textAlign: 'center',
-            }}> 
+                boxShadow: 'none',
+            }}
+            variant='outlined'
+            > 
             <h1>Log In Here</h1>
 
             <div style={{marginBottom: '6px'}}>
