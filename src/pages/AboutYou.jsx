@@ -61,7 +61,6 @@ export default function AboutYou() {
                     <TextField 
                         label="major" 
                         variant="outlined"
-                        type="password"
                         style={{
                             margin: '6px',
                             width: '422px',
