@@ -49,10 +49,7 @@ export default function ChatBox() {
                                         onChange={(e) => setUserInput(e.target.value)}
                                     />
                             </CardContent>
-                                <Button size="small" 
-                    sx={{ marginLeft: "-12px", display: 'flex', backgroundColor: "transparent", '&:focus': { outline: 'none' } }}
-                    onClick={handleSubmit} 
-                    >
+                                <Button size="small" sx={{ marginLeft: "-12px", display: 'flex', backgroundColor: "transparent", '&:focus': { outline: 'none' } }} onClick={handleSubmit}>
                                     <ArrowUpwardIcon 
                                         fontSize='large'
                                         sx={{
