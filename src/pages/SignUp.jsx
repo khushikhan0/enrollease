@@ -54,7 +54,7 @@ export default function SignUp() {
             }}
             variant='outlined'
             > 
-            <h2>sign up to enroll with ease</h2>
+            <h2>sign up with ease</h2>
 
             <div style={{marginBottom: '2px'}}>
                 <Stack direction="row">
@@ -134,13 +134,12 @@ export default function SignUp() {
                     variant="contained"
                     onClick={signUp}
                     className='better-button-inverted'
-                    boxShadow='none'
                 >
                     sign up
                 </Button>
             </div>
 
-            <p>already have an account? <a href="/log-in" style={{ color: 'black', fontWeight: 'bold' }}> log in</a>!</p>
+            <p>already have an account? <a href="/log-in" style={{ color: 'black', fontWeight: 'bold' }}> log in</a></p>
 
             </Paper>
         </div>

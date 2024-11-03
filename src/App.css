@@ -75,6 +75,7 @@
   transition: none !important;
   text-transform: initial !important;
   outline: none !important;
+  box-shadow: none !important;
 }
 
 body, html {
