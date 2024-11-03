@@ -32,7 +32,7 @@ export default function LogIn() {
 
             <div style={{marginBottom: '12px'}}>
                 <TextField 
-                id="password" s
+                id="password" 
                 label="password" 
                 variant="outlined"
                 type="password"
