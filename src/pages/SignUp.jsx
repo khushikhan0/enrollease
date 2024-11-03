@@ -3,16 +3,21 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { FormatItalic } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
+
     // set the use states for the fields
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPW, setConfirmPassword] = useState('');
     const [firstName, setFN] = useState('');
     const [lastName, setLN] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const navigate = useNavigate();
 
     async function signUp() {
 
@@ -29,20 +34,41 @@ export default function SignUp() {
         }
     
         try {
-            await fetch('http://127.0.0.1:5000/api/courses', {
+            const response = await fetch('http://127.0.0.1:5000/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(userData)
-            })
-            .catch(e => console.log("Async Error:", e))
+            });
+
+            if (response.ok) {
+                // Clear the input fields
+                setEmail('');
+                setPassword('');
+                setConfirmPassword('');
+                setFN('');
+                setLN('');
+                setErrorMsg('');
+
+                navigate('/my-classes');
+            }
+
+            if (!response.ok) {
+                // Handle HTTP errors by extracting the message from the response
+                const errorData = await response.json();
+                console.log("EOROROROROROROROROR")
+                setErrorMsg(errorData.message || "Sign up failed. Please try again.");
+                return;
+            }
         } catch (e) {
-            console.log(e)
+            console.log("WEEEEAAWWWWAEEEEE")
+            setErrorMsg(e.message || "Oops, Something went wrong");
         }
     }
 
     return (
+
         <div className="centered-container">
             <Paper 
             elevation={3}
@@ -54,8 +80,10 @@ export default function SignUp() {
             }}
             variant='outlined'
             > 
-            <h2>sign up with ease</h2>
-
+            <h2 style={{marginBottom: '3px'}}>sign up with ease</h2>
+            <div>
+                <Typography padding={'0px'}>{errorMsg}</Typography>
+            </div>
             <div style={{marginBottom: '2px'}}>
                 <Stack direction="row">
                     <TextField 
