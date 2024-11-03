@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export default function SignIn() {
+export default function LogIn() {
     return (
         <div class="centered-container">
             <Paper 
@@ -13,7 +13,7 @@ export default function SignIn() {
                 margin: '16px',
                 textAlign: 'center',
             }}> 
-            <h1>Log In Here</h1>
+            <h2>log in here</h2>
 
             <div style={{marginBottom: '6px'}}>
                 <TextField 
@@ -41,14 +41,14 @@ export default function SignIn() {
             </div>
             
             <div style={{marginBottom: '12px'}}>
-                <Button 
+                <Button className = "better-button"
                 variant="contained"
                 onClick={() => window.location.href = '/my-classes'}>
-                    Log In
+                    log in
                 </Button>
             </div>
 
-            <p>Don't have an account? <a href="/sign-up"> Sign Up</a>!</p>
+            <p>don't have an account? <a href="/sign-up"> sign up</a>!</p>
 
             </Paper>
         </div>

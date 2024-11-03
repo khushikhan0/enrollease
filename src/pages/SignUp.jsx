@@ -13,7 +13,7 @@ export default function SignUp() {
                 margin: '16px',
                 textAlign: 'center',
             }}> 
-            <h1>Sign Up for EnrollEase!</h1>
+            <h2>sign up for enrollease!</h2>
 
             <div style={{marginBottom: '2px'}}>
                 <TextField 
@@ -75,15 +75,15 @@ export default function SignUp() {
             </div>
 
             <div style={{marginBottom: '12px'}}>
-                <Button 
+                <Button className = "better-button"
                 variant="contained"
                 onClick={() => window.location.href = '/my-classes'}
                 >
-                    Sign Up
+                    sign up
                 </Button>
             </div>
 
-            <p>Already have an account? <a href="/login"> Log In</a>!</p>
+            <p>already have an account? <a href="/log-in"> log in</a>!</p>
 
             </Paper>
         </div>
