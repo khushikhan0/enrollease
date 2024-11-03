@@ -27,11 +27,11 @@ export default function ChatBox() {
 
     return (
         <div>
-            <Box display='flex' justifyContent='center' alignItems='center'>
+            <Box display='flex' justifyContent='center' alignItems='center' sx={{ marginTop: '20px', marginBottom: '20px' }}>
                 <p>{userInput}</p> 
                 <p>{aiInput}</p>
 
-                <Card variant='contained' sx={{ boxShadow: 'none', display: 'flex', width: '90%', maxWidth: '1000px', borderRadius: '10px', backgroundColor: 'lightgray' }}>
+                <Card variant='outlined' sx={{ display: 'flex', width: '90%', maxWidth: '1000px', borderRadius: '10px', boxShadow: '0px 4px 20px rgba(200, 200, 200, 0.5)', transition: 'box-shadow 0.3s ease-in-out' }}>
                     <Box display="flex" justifyContent="center" alignItems="center" height="100vh" width="100vw">
                         <Card variant='outlined' sx={{ boxShadow: 'none', minWidth: '200px', display: 'flex', width: '80%', maxWidth: '1000px', marginBottom: '-80vh', borderRadius: '10px' }}>
                             <CardContent sx={{ flexGrow: 1, borderRadius: '10px' }}>
@@ -65,7 +65,6 @@ export default function ChatBox() {
                     </Box>
                 </Card> 
             </Box>
-           
         </div>
       );
 }

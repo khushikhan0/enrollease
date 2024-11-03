@@ -16,7 +16,6 @@ import CourseDetails from "./pages/CourseDetails";
 import MyClasses from "./pages/MyClasses";
 import AboutYou from "./pages/AboutYou";
 import SignUp from "./pages/SignUp";
-import ChatBox from "./pages/ChatBox";
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
         <Route path="/my-classes" element={<MyClasses />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="/about-you" element={<AboutYou />} />
-        <Route path="/ask-your-advisor" element={<ChatBox />} />
       </Routes>
     </Router>
   );

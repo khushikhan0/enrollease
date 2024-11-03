@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import NavBarButton from '../components/NavBarButton';
-import { Paper, Button, TextField } from '@mui/material';
+import { Paper, Button, TextField, Stack, Divider, InputAdornment, IconButton } from '@mui/material';
+import ChatBox from '../components/ChatBox';
+import SearchIcon from '@mui/icons-material/Search';
 
 // Initial semester data
 const initialSemesters = {
@@ -85,13 +87,13 @@ function SemesterClasses({ semesterTitle, classes, updateClasses, semesterKey })
                         <li key={index}>{classItem}</li>
                     ))
                 ) : (
-                    <li>No classes available</li>
+                    <li>no classes available</li>
                 )}
             </ul>
             <TextField
                 size="small"
                 variant="outlined"
-                placeholder="Enter a class"
+                placeholder="enter a class"
                 value={classInput}
                 onChange={(e) => setClassInput(e.target.value)}
                 style={{ marginTop: '10px' }}
@@ -106,7 +108,7 @@ function SemesterClasses({ semesterTitle, classes, updateClasses, semesterKey })
                     onClick={handleAddClass} 
                     disableRipple
                 >
-                    Add
+                    add
                 </Button>
                 <Button 
                     variant="contained"
@@ -114,7 +116,7 @@ function SemesterClasses({ semesterTitle, classes, updateClasses, semesterKey })
                     onClick={handleRemoveClass}
                     disableRipple
                 >
-                    Remove
+                    remove
                 </Button>
             </div>
         </Paper>
@@ -140,23 +142,40 @@ export default function MyClasses() {
     return (
         <div>
             <NavBarButton />
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '20px',
-                padding: '20px'
-            }}>
-                {Object.keys(semesterData).map((semesterKey) => (
-                    <div key={semesterKey} style={{ width: '100%' }}>
-                        <SemesterClasses 
-                            semesterTitle={semesterTitles[semesterKey]}  // Pass the title here
-                            classes={semesterData[semesterKey]} 
-                            updateClasses={updateClasses} 
-                            semesterKey={semesterKey}  // Pass the semester key for updates
+            <Stack direction="row">
+                <Stack direction="column">
+                    <h2>classes</h2>
+                    <Divider sx={{ marginX: 2 }} />
+                    <Stack direction="row" alignItems="center" justifyContent="center">
+                        <TextField
+                            placeholder="search for semester"
+                            sx={{ margin: '10px', width: '90%' }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={() => console.log('Search button clicked')}>
+                                            <SearchIcon />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
                         />
-                    </div>
-                ))}
-            </div>
+                    </Stack>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', padding: '20px' }}>
+                    {Object.keys(semesterData).map((semesterKey) => (
+                        <div key={semesterKey} style={{ width: '100%' }}>
+                            <SemesterClasses 
+                                semesterTitle={semesterTitles[semesterKey]}  // Pass the title here
+                                classes={semesterData[semesterKey]} 
+                                updateClasses={updateClasses} 
+                                semesterKey={semesterKey}  // Pass the semester key for updates
+                            />
+                        </div>
+                    ))}
+                </div>
+                </Stack>
+                <ChatBox />
+            </Stack>
         </div>
     );
 }

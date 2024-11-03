@@ -68,13 +68,13 @@ export default function CustomDrawer({ isOpen, toggleDrawer }) {
                             }
                         }}
                     >
-                    <CloseIcon sx={{ 
-                        display: 'flex', 
-                        position: 'absolute',
-                        right: '20px',
-                        top: '-5px'
-                    }} />
-                </IconButton>
+                        <CloseIcon sx={{ 
+                            display: 'flex', 
+                            position: 'absolute',
+                            right: '20px',
+                            top: '-5px'
+                        }} />
+                    </IconButton>
                 </ListItem>
 
                 {menuItems.map((item, index) => (
