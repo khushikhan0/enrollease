@@ -58,6 +58,7 @@
   transition: none !important;
   text-transform: initial !important;
   outline: none !important;
+  box-shadow: none !important;
 }
 
 .better-button:hover {
@@ -86,9 +87,10 @@ body, html {
 
 .image-container {
   width: 100vw;          /* Full viewport width */
-  height: 70vh;          /* Portion of viewport height */
+  height: 80vh;          /* Portion of viewport height */
   overflow: hidden;      /* Hide overflow to crop image */
-  position: relative;
+  position: fixed;
+  top: 0;
   left: 0;               /* Align container to the left edge */
 }
 

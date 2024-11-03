@@ -44,18 +44,15 @@ export default function AboutYou() {
                 <div style={{marginBottom: '12px'}}>
                     <Button 
                         variant="contained"
-                        onClick={() => window.location.href = '/my-classes'}
+                        onClick={() => window.location.href = '/sign-up'}
                         className='better-button'
                         sx={{
                             boxShadow: 'none'
                         }}
                     >
-                        sign up
+                        next
                     </Button>
                 </div>
-
-                <p>have an account? <a href="/sign-up" style={{ color: 'black', fontWeight: 'bold' }}> log in</a>!</p>
-
             </Paper>
         </div>
     );

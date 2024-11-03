@@ -8,14 +8,14 @@ import '../App.css'
 export default function Home() {
     return (
         <div>
-            <NavBarButton />
             <div className='image-container'>
                 <img src='src\assets\gradient.png' className='responsive-image'/>
             </div>
+            <NavBarButton />
             <div className='centered-container'>
                 <Stack spacing={2} alignItems="center" className='stack-styling'>
                     <h1>welcome to enrollease</h1>
-                    <h3>ai-powered advising</h3>
+                    <h3>your academic advisor but better</h3>
                     <Button 
                         variant="outlined" 
                         className='better-button-inverted'
