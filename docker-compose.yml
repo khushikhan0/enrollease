@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build:
+      context: ./flask_app  # Path to the Flask app directory
+    ports:
+      - "5001:5000"  # Map Flask port
+    volumes:
+      - ./flask_app:/app  # Optional: bind mount for development
+
+  react-app:
+    build:
+      context: ./  # Path to the root where package.json is located
+    ports:
+      - "3000:3000"  # Map React port
+    volumes:
+      - ./src:/app  # Optional: bind mount for development

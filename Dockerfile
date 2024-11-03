@@ -1,18 +1,26 @@
-# Use an official Python base image
-FROM python:3.9-slim
+# Use the official Node.js image
+FROM node:16
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir --use-deprecated=legacy-resolver -r requirements.txt
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Copy the rest of the application code
+# Install dependencies
+RUN npm install
+
+# Copy the rest of your application (from the root directory)
 COPY . .
 
-# Expose a port if your application needs it (e.g., FastAPI runs on 8000)
-EXPOSE 8000
+# Build the React app
+RUN npm run build
 
-# Command to run your application (modify this to fit your needs)
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Install serve to serve the build
+RUN npm install -g serve
+
+# Expose the port that the app runs on
+EXPOSE 3000
+
+# Command to run the application
+CMD ["serve", "-s", "build"]
