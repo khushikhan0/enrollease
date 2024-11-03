@@ -15,8 +15,10 @@ async function onClick(event) {
     }
 }
 
+var apple = "hi"
+
 export default function CourseDetails() {
     return (
-        <Button onClick={onClick}>pushme</Button>
+        <Button onClick={onClick}>{apple}</Button>
     );
 }

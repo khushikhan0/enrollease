@@ -12,13 +12,16 @@ export default function LogIn() {
                 padding: '16px',
                 margin: '16px',
                 textAlign: 'center',
-            }}> 
-            <h2>log in here</h2>
+                boxShadow: 'none',
+            }}
+            variant='outlined'
+            > 
+            <h2>log in with ease</h2>
 
             <div style={{marginBottom: '6px'}}>
                 <TextField 
                 id="email-address" 
-                label="Email Address" 
+                label="email address" 
                 variant="outlined" 
                 style={{
                     margin: '6px',
@@ -30,7 +33,7 @@ export default function LogIn() {
             <div style={{marginBottom: '12px'}}>
                 <TextField 
                 id="password" s
-                label="Password" 
+                label="password" 
                 variant="outlined"
                 type="password"
                 style={{
@@ -41,14 +44,16 @@ export default function LogIn() {
             </div>
             
             <div style={{marginBottom: '12px'}}>
-                <Button className = "better-button"
-                variant="contained"
-                onClick={() => window.location.href = '/my-classes'}>
+                <Button 
+                    variant="contained"
+                    onClick={() => window.location.href = '/my-classes'}
+                    className='better-button-inverted'
+                >
                     log in
                 </Button>
             </div>
 
-            <p>don't have an account? <a href="/sign-up"> sign up</a>!</p>
+            <p>don't have an account? <a href="/sign-up" style={{ color: 'black', fontWeight: 'bold' }}> sign up</a></p>
 
             </Paper>
         </div>

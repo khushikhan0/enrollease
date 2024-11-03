@@ -14,6 +14,7 @@ import LogIn from "./pages/LogIn";
 import Home from "./pages/Home";
 import CourseDetails from "./pages/CourseDetails";
 import MyClasses from "./pages/MyClasses";
+import AboutYou from "./pages/AboutYou";
 import SignUp from "./pages/SignUp";
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/course-details" element={<CourseDetails />} />
         <Route path="/my-classes" element={<MyClasses />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="/about-you" element={<AboutYou />} />
       </Routes>
     </Router>
   );
