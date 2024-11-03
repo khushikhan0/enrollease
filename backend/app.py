@@ -26,7 +26,7 @@ def signUp():
     last_name = data.get('lastName')
 
     reponse = supabase.auth.sign_up (
-        {"email": email, "password", password}
+        {"email": email, "password": password}
     )
     
 

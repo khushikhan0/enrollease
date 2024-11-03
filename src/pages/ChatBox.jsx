@@ -2,10 +2,28 @@ import React, { useState } from 'react';
 import "../App.css";
 import { Paper, TextField, Button, Chip, Stack, Card, CardContent, Typography, CardActions } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import axios from 'axios'; // Import Axios for making HTTP requests
 
 export default function ChatBox() {
     const [userInput, setUserInput] = useState('');
     const [aiInput, setAiInput] = useState('');
+
+    const handleSubmit = async () => {
+        if (!userInput) return; // Prevent submission if input is empty
+
+        try {
+            const response = await axios.post('http://127.0.0.1:5000/api/ask', {
+                question: userInput,
+            });
+
+            // Set the AI's response
+            setAiInput(response.data.answer);
+            // Optionally clear the input after sending
+            setUserInput('');
+        } catch (error) {
+            console.error('Error communicating with the server:', error);
+        }
+    };
 
     return (
         <div>
@@ -26,7 +44,10 @@ export default function ChatBox() {
                         />
                 </CardContent>
                 <CardActions sx={{ display: 'flex' }}>
-                    <Button size="small" sx={{ marginLeft: "-20px", display: 'flex' }}>
+                    <Button size="small" 
+                    sx={{ marginLeft: "-20px", display: 'flex' }}
+                    onClick={handleSubmit} 
+                    >
                         <ArrowUpwardIcon 
                             fontSize='large'
                             sx={{
